@@ -30,7 +30,7 @@ app.use((req, res, next) => {
 
 
 // blog routes
-app.use(blogRoutes)
+app.use('/blogs', blogRoutes)  // Scoped the endpoints to forward-slash blogs. We do not need to append/prefix the routes with /blogs
 
 // Learnt about creating database in MongoDB, connecting with mongoose and getting data from MongoDB
 

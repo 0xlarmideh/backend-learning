@@ -1,5 +1,5 @@
 // 
-const Blog = require("../../models/blog");
+const Blog = require("../models/blog");
 
 const blog_index = (req, res) => {
   Blog.find()
@@ -12,7 +12,7 @@ const blog_index = (req, res) => {
     });
 };
 
-const blog_create_get = (req, res) => {
+const blog_create = (req, res) => {
   // console.log(req.body);
   const blog = new Blog(req.body);
 
@@ -33,12 +33,12 @@ blog_details = (req, res) => {
       res.render("blogs/details", { blog: result, title: "Blog Details" });
     })
     .catch((err) => {
-      console.log(err);
+      res.status(404).render('404', {title: '404 page not found'})
     });
 };
 
-const blog_create = (req, res) => {
-  res.render("blogs/create"), { title: "Create a new blog" };
+const blog_create_get = (req, res) => {
+  res.render("blogs/create", { title: "Create a new blog" });
 };
 
 blog_delete = (req, res) => {
@@ -53,4 +53,4 @@ blog_delete = (req, res) => {
     });
 };
 
-module.exports = {blog_index, blog_create, blog_details, blog_delete}
+module.exports = {blog_index, blog_create, blog_details, blog_delete, blog_create_get}
