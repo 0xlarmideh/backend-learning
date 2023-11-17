@@ -2,14 +2,13 @@ const express = require("express");
 const mongoose = require("mongoose");
 const morgan = require("morgan");
 const blogRoutes = require('./routes/blogRutes/index')
+require("dotenv").config();
+
 // Connect to MongoDB
 
 const app = express();
-const dbURL =
-  "mongodb+srv://basugar441:Abdul1234@my-cluster.2ngqzs0.mongodb.net/backend-tuts?retryWrites=true&w=majority";
-
 mongoose
-  .connect(dbURL)
+  .connect(process.env.BACKEND_DBURL)
   .then((result) => {
     app.listen(3000);
     console.log("Connected to DB ");
